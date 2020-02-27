@@ -4,29 +4,21 @@
 PlayScene::PlayScene(int levelNum)
 {
     this->levelIndex = levelNum;
+    initWidget();
+    initData();
+    connectSig();
+}
 
-    this->setFixedSize(320, 588);
-    this->setWindowIcon(QPixmap(":/res/Coin0001.png"));
-    this->setWindowTitle(tr("翻金币场景"));
-
+void PlayScene::initData()
+{
     bar = menuBar();
     setMenuBar(bar);
     startMenu = bar->addMenu(tr("开始"));
     quitAction = startMenu->addAction(tr("退出"));
 
-    connect(quitAction, &QAction::triggered, [=](){
-        this->close();
-    });
-
     backBtn = new MyPushButton(":/res/BackButton.png", ":/res/BackButtonSelected.png");
     backBtn->setParent(this);
     backBtn->move((this->width() - backBtn->width()), (this->height() - backBtn->height()));
-
-    connect(backBtn, &MyPushButton::clicked, [=](){
-        QTimer::singleShot(500, this, [=](){
-            emit chooseSceneBack();
-        });
-    });
 
     QLabel *label = new QLabel();
     label->setParent(this);
@@ -38,7 +30,38 @@ PlayScene::PlayScene(int levelNum)
     label->setText(strLevel);
     label->setGeometry(30, this->height() - 50, 120, 50);
 
+    for(int i = 0; i < 4; i++)
+    {
+        for(int j = 0; j < 4; j++)
+        {
+           QPixmap pix= QPixmap(":/res/BoardNode.png");
+           QLabel *coinLabel = new QLabel(this);
+           coinLabel->setGeometry(0, 0, pix.width(), pix.height());
+           coinLabel->setPixmap(pix);
+           coinLabel->move(57 + i*50, 200 + j*50);
+        }
 
+    }
+}
+
+void PlayScene::initWidget()
+{
+    this->setFixedSize(320, 588);
+    this->setWindowIcon(QPixmap(":/res/Coin0001.png"));
+    this->setWindowTitle(tr("翻金币场景"));
+}
+
+void PlayScene::connectSig()
+{
+    connect(quitAction, &QAction::triggered, [=](){
+        this->close();
+    });
+
+    connect(backBtn, &MyPushButton::clicked, [=](){
+        QTimer::singleShot(500, this, [=](){
+            emit chooseSceneBack();
+        });
+    });
 }
 
 void PlayScene::paintEvent(QPaintEvent *ev)

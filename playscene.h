@@ -14,8 +14,9 @@ class PlayScene : public QMainWindow
     Q_OBJECT
 public:
     PlayScene(int levelNum);
-
-    int levelIndex;
+    void initData();
+    void initWidget();
+    void connectSig();
 
 protected:
     void paintEvent(QPaintEvent *ev);
@@ -24,6 +25,7 @@ signals:
 public slots:
 
 private:
+    int levelIndex;
     QAction *quitAction;
     QMenu *startMenu;
     QMenuBar *bar;
