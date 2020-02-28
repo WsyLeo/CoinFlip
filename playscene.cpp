@@ -39,8 +39,11 @@ void PlayScene::initData()
            coinLabel->setGeometry(0, 0, pix.width(), pix.height());
            coinLabel->setPixmap(pix);
            coinLabel->move(57 + i*50, 200 + j*50);
-        }
 
+           mMyCoin = new MyCoin(":/res/Coin0001.png");
+           mMyCoin->setParent(this);
+           mMyCoin->move(59 + i*50, 204 + j*50);
+        }
     }
 }
 

@@ -8,6 +8,7 @@
 #include <QPainter>
 #include <QTimer>
 #include <QLabel>
+#include "mycoin.h"
 
 class PlayScene : public QMainWindow
 {
@@ -30,6 +31,7 @@ private:
     QMenu *startMenu;
     QMenuBar *bar;
     MyPushButton *backBtn;
+    MyCoin *mMyCoin;
 };
 
 #endif // PLAYSCENE_H
