@@ -2,35 +2,20 @@
 #define CHOOSELEVELSCENE_H
 
 #include <QMainWindow>
-#include <QMenuBar>
-#include <QPaintEvent>
-#include <QPainter>
-#include "mypushbutton.h"
-#include <QDebug>
-#include <QTimer>
-#include <QLabel>
-#include "playscene.h"
+#include<mypushbutton.h>
+#include<playscene.h>
 
 class ChooseLevelScene : public QMainWindow
 {
     Q_OBJECT
+    MyPushButton *closeBtn;
+    PlayScene *pScene;
 public:
     explicit ChooseLevelScene(QWidget *parent = nullptr);
-    void initData();
-    void initWidget();
-    void connectSig();
+    void paintEvent(QPaintEvent *);
+
 signals:
     void chooseSceneBack();
-
-public slots:
-protected:
-    void paintEvent(QPaintEvent *ev);
-private:
-    QAction *quitAction;
-    QMenu *startMenu;
-    QMenuBar *bar;
-    MyPushButton *backBtn;
-    PlayScene *mPlayScene;
 };
 
 #endif // CHOOSELEVELSCENE_H

@@ -2,36 +2,20 @@
 #define PLAYSCENE_H
 
 #include <QMainWindow>
-#include <QPaintEvent>
-#include "mypushbutton.h"
-#include <QMenuBar>
-#include <QPainter>
-#include <QTimer>
-#include <QLabel>
-#include "mycoin.h"
+#include<mycoin.h>
 
 class PlayScene : public QMainWindow
 {
     Q_OBJECT
+    int levelIndex;
+    int gameArray[4][4];
+    bool isWin;
 public:
-    PlayScene(int levelNum);
-    void initData();
-    void initWidget();
-    void connectSig();
-
-protected:
-    void paintEvent(QPaintEvent *ev);
+    PlayScene(int index);
+    void paintEvent(QPaintEvent *event);
+    MyCoin * coinBtn[4][4];
 signals:
     void chooseSceneBack();
-public slots:
-
-private:
-    int levelIndex;
-    QAction *quitAction;
-    QMenu *startMenu;
-    QMenuBar *bar;
-    MyPushButton *backBtn;
-    MyCoin *mMyCoin;
 };
 
 #endif // PLAYSCENE_H

@@ -2,24 +2,25 @@
 #define MYCOIN_H
 
 #include <QWidget>
-#include <QPushButton>
-#include <QDebug>
+#include<QPushButton>
 
 class MyCoin : public QPushButton
 {
     Q_OBJECT
-public:
-    MyCoin(QString path);
-    void initData();
-    void initWidget();
-    void connectSig();
 
+public:
+    MyCoin(QString butImg);
+    int posX,posY;
+    bool flag;
+    QTimer *timer1;
+    QTimer *timer2;
+    int min, max;
+    bool isAnimation;
+    void changeFlag();
+    void mousePressEvent(QMouseEvent *e);
+    bool isWin;
 signals:
 
-public slots:
-
-private:
-    QString mPath;
 };
 
 #endif // MYCOIN_H

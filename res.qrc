@@ -20,6 +20,7 @@
         <file>res/MenuSceneStartButton.png</file>
         <file>res/OtherSceneBg.png</file>
         <file>res/PlayLevelSceneBg.png</file>
+        <file>res/res</file>
         <file>res/TapButtonSound.wav</file>
         <file>res/Title.png</file>
     </qresource>

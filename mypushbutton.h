@@ -1,27 +1,22 @@
 #ifndef MYPUSHBUTTON_H
 #define MYPUSHBUTTON_H
 
-#include <QWidget>
 #include <QPushButton>
-#include <QDebug>
-#include <QPropertyAnimation>
-#include <QMouseEvent>
 
 class MyPushButton : public QPushButton
 {
     Q_OBJECT
-public:
-    MyPushButton(QString normalImg, QString pressImg = "");
-
-    void zoomDown();
-    void zoomUp();
-
-protected:
-    void mousePressEvent(QMouseEvent *ev);
-    void mouseReleaseEvent(QMouseEvent *ev);
-private:
     QString normalImgPath;
-    QString pressImgPath;
+    QString pressedImgPath;
+public:
+    MyPushButton(QString normalImg,QString pressImg="");
+    //向下跳跃
+    void zoom1();
+    //向上跳跃
+    void zoom2();
+    void mousePressEvent(QMouseEvent *e);
+    void mouseReleaseEvent(QMouseEvent *e);
+signals:
 
 };
 
